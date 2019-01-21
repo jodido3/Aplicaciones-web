@@ -1,7 +1,8 @@
 <html>
 <head>
 	<title>Hábitos</title>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
 <body>
 	<?php
@@ -24,16 +25,21 @@
 	<?php
 		$lectura = "SELECT * FROM Habitos;";
 		$habitos = mysqli_query($conn, $lectura);
-		echo "Numero de habitos: " . mysqli_num_rows($habitos) . "<br>";
+		if (mysqli_num_rows($habitos) > 0) {
+		echo "<ul class=\"list-group\">";
 		while($hab = mysqli_fetch_array($habitos)){
-		echo $hab['ID'] . " - " . $hab['Nome'] . "<a href=\"habitos.php?borrar=" . $hab['ID'] . "\"><i class=\"far fa-trash-alt\"></i></a><br>";
+		echo "<li class=\"list-group-item\">" . $hab['Nome'] . "<a href=\"habitos.php?borrar=" . $hab['ID'] . "\"><i class=\"far fa-trash-alt\"></i></a></li>";
+		}
+		echo "</ul>";
+		} else {
+			echo "Aínda non se creou ningún hábito";
 		}
 	
 	?>
-	<p>Se precisas axuda, le <a href="https://www.youtube.com/">isto</a>.</p>
+	<p>Se precisas axuda, lee <a href="https://www.youtube.com/">isto</a>.</p>
 	<form name="habito" method="post" action="habitos.php">
 		<input type="text" id="nome" name="nome">
-		<button id="gardar" type="submit">Gardar</button>
+		<button id="gardar" type="submit" class="btn btn-primary">Gardar</button>
 	</form>
 </body>
 </html>
