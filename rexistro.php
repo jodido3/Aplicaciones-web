@@ -4,7 +4,11 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
-<body>
+<style>
+body{
+	 background-image: url("azulito.jpg");
+}
+</style>
 	<?php
 		include './database.php';
 
@@ -16,7 +20,7 @@
 
 		$lectura = "SELECT * FROM Habitos ORDER BY Nome;";
 		$habitos = mysqli_query($conn, $lectura);
-		$lerexistro = "SELECT * FROM Rexistro INNER JOIN Habitos ON Rexistro.id_habito = Habitos.ID WHERE Rexistro.dia >= CURDATE() - INTERVAL 4 DAY ORDER BY Habitos.Nome, Rexistro.dia;";
+		$lerexistro = "SELECT * FROM Rexistro INNER JOIN Habitos ON Rexistro.id_habito = Habitos.ID WHERE Rexistro.dia >= CURDATE() - INTERVAL 6 DAY ORDER BY Habitos.Nome, Rexistro.dia;";
 		$valores = mysqli_query($conn, $lerexistro);
 	?>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,7 +31,7 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		    <a class="nav-link" href="home.php">Home</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="habitos.php">Hábitos</a>
@@ -44,7 +48,7 @@
 			<?php
 				$hoxe = mktime(0,0,0);
 				$datas = [];
-				for ($dias=4;$dias>=0;$dias--) {
+				for ($dias=6;$dias>=0;$dias--) {
 					echo "<td>" . date('j/n/Y', $hoxe-$dias*24*60*60) . "</td>";
 					$datas[] = date('Y-m-d', $hoxe-$dias*24*60*60);
 				}
@@ -64,7 +68,8 @@
 							if ($valor['valor'] == 0) {
 								echo "<td><i class=\"fas fa-times-circle\"></i></td>";
 							} else {
-								echo "<td><i class=\"fas fa-check-circle\"></i></td>";
+								echo "<td><i class=\"fas fa-check\"></i></td>";
+
 							}
 							$valor = mysqli_fetch_array($valores);
 						} else {

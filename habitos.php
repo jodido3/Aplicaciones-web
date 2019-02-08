@@ -4,7 +4,11 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
-<body>
+<style>
+body{
+	 background-image: url("azulito.jpg");
+}
+</style>
 	<?php
 		include './database.php';
 		// Crear novo hábito (resposta ao POST)
@@ -30,7 +34,7 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		    <a class="nav-link" href="home.php">Home</a>
 		  </li>
 		  <li class="nav-item active">
 		    <a class="nav-link" href="habitos.php">Hábitos</a>
