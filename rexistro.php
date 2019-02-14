@@ -30,6 +30,9 @@ body{
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
+		   <li class="nav-item">
+		    <a class="nav-link" href="index.php">Login</a>
+		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="home.php">Home</a>
 		  </li>
@@ -81,5 +84,6 @@ body{
 			}
 		?>
 	</table>
+<div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/city/3117735"><span style="color:gray;">Hora actual en</span><br />España</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=Europe%2FMadrid" width="100%" height="115" frameborder="0" seamless></iframe> </div>
 </body>
 </html>
